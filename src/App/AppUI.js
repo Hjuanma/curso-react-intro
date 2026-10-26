@@ -13,6 +13,8 @@ function AppUI({
   filteredTodoList,
   completeTask,
   deleteTask,
+  loading, 
+  error
 }) {
   return (
     <>
@@ -22,6 +24,11 @@ function AppUI({
       <CreateTodoBtn addTodo={addTodo} />
 
       <TodoList>
+        {loading && <p>Loading..</p>}
+        {error && <p>ERROR</p>}
+        {!loading && filteredTodoList.length === 0 && (
+          <p>No tienes items en la lista</p>
+        )}
         {filteredTodoList.map((todo) => (
           <TodoItem
             onComplete={() => completeTask(todo)}

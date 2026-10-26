@@ -11,7 +11,7 @@ import React from "react";
 
 function App() {
   const [searchValue, setSearchValue] = React.useState("");
-  const [todos, saveTodo] = useLocalStorage("TODOS_V1", []);
+  const {item: todos, saveItem: saveTodo, loading, error} = useLocalStorage("TODOS_V1", []);
 
   const completedTodos = todos.filter((todo) => todo.completed).length;
   const totalTodos = todos.length;
@@ -56,6 +56,8 @@ function App() {
       filteredTodoList={filteredTodoList}
       completeTask={completeTask}
       deleteTask={deleteTask}
+      error={error}
+      loading={loading}
     />
   );
 }
