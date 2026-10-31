@@ -8,8 +8,9 @@ import { TodoList } from "../TodoList";
 import { TodoLoading } from "../TodoLoading";
 import { TodoError } from "../TodoError";
 import { EmptyTodoList } from "../EmptyTodoList";
-import { CreateTodoBtn } from "../create_todo";
+import { CreateTodoBtn } from "../CreateTodo";
 import { TodoContext } from "../TodoContext";
+import { TodoForm } from "../TodoForm";
 
 function AppUI() {
   const {
@@ -42,9 +43,7 @@ function AppUI() {
         ))}
       </TodoList>
 
-      {openModal && <Modal>
-        Modal para crear todos
-        </Modal>}
+      {openModal && <Modal><TodoForm/></Modal>}
     </>
   );
 }

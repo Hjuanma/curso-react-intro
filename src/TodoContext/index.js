@@ -21,21 +21,21 @@ function TodoProvider({ children }) {
     todo.text.toLowerCase().includes(searchValue.toLowerCase()),
   );
 
-  const openAddTodo = () => {
+  const openTodoForm = () => {
     setOpenModal(!openModal);
   }
 
-  // const addTodo = () => {
-  //   const newTodo = [
-  //     {
-  //       text: searchValue,
-  //       completed: false,
-  //     },
-  //     ...todos,
-  //   ];
-  //   saveTodo(newTodo);
-  //   setSearchValue("");
-  // };
+  const addTodo = (newTodoText) => {
+    const newTodo = [
+      {
+        text: newTodoText,
+        completed: false,
+      },
+      ...todos,
+    ];
+    saveTodo(newTodo);
+    setSearchValue("");
+  };
 
   const completeTask = (todo) => {
     const newTodo = todos.map((x) =>
@@ -56,7 +56,8 @@ function TodoProvider({ children }) {
         totalTodos,
         searchValue,
         setSearchValue,
-        openAddTodo,
+        openTodoForm,
+        addTodo,
         filteredTodoList,
         completeTask,
         deleteTask,
@@ -75,8 +76,4 @@ TodoProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-function TodoConsumer() {
-    <TodoContext.Consumer/>
-}
-
-export {TodoContext, TodoProvider, TodoConsumer};
+export {TodoContext, TodoProvider};
