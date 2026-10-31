@@ -1,8 +1,13 @@
 import React from "react";
-import {TodoIcon} from '../TodoIcon';
+import PropTypes from "prop-types";
+import { TodoIcon } from '../TodoIcon';
 
 function DeleteIcon({ onClick }) {
   return <TodoIcon type="delete" color="gray" onClick={onClick} />;
 }
 
-export {DeleteIcon}
+DeleteIcon.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
+export { DeleteIcon };

@@ -3,9 +3,13 @@ import './CreateTodoBtn.css'
 import { TodoContext } from '../TodoContext';
 
 function CreateTodoBtn() {
-  const { addTodo } = React.useContext(TodoContext);
+  const { openAddTodo } = React.useContext(TodoContext);
 
-  return <button className="CreateTodoButton" onClick={addTodo}>+</button>;
+  return (
+    <button className="CreateTodoButton" onClick={openAddTodo}>
+      +
+    </button>
+  );
 }
 
 export {CreateTodoBtn};

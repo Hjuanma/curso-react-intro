@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { TodoIcon } from "../TodoIcon";
 
 function CheckIcon({ completed, onClick }) {
@@ -11,4 +12,9 @@ function CheckIcon({ completed, onClick }) {
   );
 }
 
-export {CheckIcon}
+CheckIcon.propTypes = {
+  completed: PropTypes.bool.isRequired,
+  onClick: PropTypes.func,
+};
+
+export { CheckIcon };

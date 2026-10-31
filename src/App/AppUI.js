@@ -1,4 +1,7 @@
+import React from "react";
+
 import { TodoCounter } from "../TodoCounter";
+import { Modal } from "../Modal";
 import { TodoInput } from "../TodoInput";
 import { TodoItem } from "../TodoItem";
 import { TodoList } from "../TodoList";
@@ -8,9 +11,16 @@ import { EmptyTodoList } from "../EmptyTodoList";
 import { CreateTodoBtn } from "../create_todo";
 import { TodoContext } from "../TodoContext";
 
-
-
 function AppUI() {
+  const {
+    loading,
+    error,
+    filteredTodoList,
+    completeTask,
+    deleteTask,
+    openModal,
+  } = React.useContext(TodoContext);
+
   return (
     <>
       <TodoCounter />
@@ -18,24 +28,25 @@ function AppUI() {
 
       <CreateTodoBtn />
 
-      <TodoContext.Consumer>
-        {({ loading, error, filteredTodoList, completeTask, deleteTask }) => (
-          <TodoList>
-            {loading && <TodoLoading />}
-            {error && <TodoError />}
-            {!loading && filteredTodoList.length === 0 && <EmptyTodoList />}
-            {filteredTodoList.map((todo) => (
-              <TodoItem
-                onComplete={() => completeTask(todo)}
-                onDelete={() => deleteTask(todo)}
-                todo={todo}
-              />
-            ))}
-          </TodoList>
-        )}
-      </TodoContext.Consumer>
+      <TodoList>
+        {loading && <TodoLoading />}
+        {error && <TodoError />}
+        {!loading && filteredTodoList.length === 0 && <EmptyTodoList />}
+        {filteredTodoList.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            onComplete={() => completeTask(todo)}
+            onDelete={() => deleteTask(todo)}
+            todo={todo}
+          />
+        ))}
+      </TodoList>
+
+      {openModal && <Modal>
+        Modal para crear todos
+        </Modal>}
     </>
   );
 }
 
-export {AppUI};
+export { AppUI };

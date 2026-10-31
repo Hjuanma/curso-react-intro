@@ -16,8 +16,20 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app"
-    ]
+      "react-app",
+      "plugin:react/recommended",
+      "plugin:import/recommended"
+    ],
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      }
+    }
   },
   "browserslist": {
     "production": [
@@ -30,5 +42,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-react": "^7.37.5"
   }
 }

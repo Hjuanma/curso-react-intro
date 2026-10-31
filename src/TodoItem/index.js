@@ -1,4 +1,6 @@
+import React from 'react';
 import "./TodoItem.css";
+import PropTypes from 'prop-types';
 import {CheckIcon} from '../CheckIcon';
 import {DeleteIcon} from '../DeleteIcon';
 
@@ -20,5 +22,14 @@ function TodoItem({ onComplete, todo, onDelete }) {
     </li>
   );
 }
+
+TodoItem.propTypes = {
+  onComplete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  todo: PropTypes.shape({
+    completed: PropTypes.bool.isRequired,
+    text: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export { TodoItem };
